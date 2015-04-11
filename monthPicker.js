@@ -1,7 +1,6 @@
 (function () {
 
     angular.module('monthPickerModule', [])
-
             .directive("monthPicker", directive)
             .controller("MonthPickerController", controller)
 

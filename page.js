@@ -6,8 +6,7 @@ angular.module('pageModule', [])
         replace: true,
         templateUrl: 'page.html',
         link: function(scope, iElement, attributes, controller, transcludeFn) {
-            console.log("iElement:", iElement);
-
+            
             //
             // find the page elements in the template
             //

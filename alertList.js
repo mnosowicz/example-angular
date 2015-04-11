@@ -1,7 +1,6 @@
 angular.module('alertListModule', [])
 
 .directive("alertList", function() {
-    console.log("In alerts");
     return {
         restrict: 'AE',
         replace: true,
