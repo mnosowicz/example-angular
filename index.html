@@ -2,43 +2,52 @@
 <html>
     <head>
         <script src="assets/angular.js"></script>
-        <!--<link rel="stylesheet" href="assets/bootstrap.css">-->
         <link rel="stylesheet" href="assets/bootstrap.css">
         <link rel="stylesheet" href="assets/app.css">
     </head>
     <body ng-app="app">
-        <page ng-controller="PageController as ctrl">
+        <!--[if lt IE 9]>
+        <div class="alert alert-danger" role="alert">
+        Angular 1.3 is not supported in IE8 and below. To see this demo you need to use at least Internet Explorer 9.
+        </div>
+        <![endif]-->
+        <page ng-controller="PageController as page">
             <header>
                 <h1>Monthly Message Viewing System</h1>
             </header>
             <sidebar>
+
                 <panel heading="Month picker">
                     <month-picker 
-                        
-                        month-selected-expression="ctrl.selectMonth(month)">
+                        multi="{{page.multiMode}}"
+                        selected-months="page.setSelectedMonths(months)"
+                        last-selected-month="page.setLastSelectedMonth(month)">
                     </month-picker>
                 </panel>
-                <panel heading='Options'>
-                    <checkbox label="multi-mode" model="ctrl.multiMode  "></checkbox>
-                    <checkbox class="text-danger" label="| danger" model="ctrl.showDanger"></checkbox>
-                    <checkbox class="text-warning" label="| warning" model="ctrl.showWarning"></checkbox>
-                    <checkbox class="text-info" label="| info" model="ctrl.showInfo"></checkbox>
-                    <hr />
-                    <span>
-                        filter message: <input type='text' ng-model="ctrl.messageFilter"></input>
-                    </span>
+                
+                <panel heading="Month Picker Options">
+                    <checkbox label="multi-mode" model="page.multiMode"></checkbox>
+                    <br />
+                    filter message: <input type='text' ng-model="page.messageFilter"></input>
                 </panel>
+
+                <panel heading="Add Alert">
+                    <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
+                </panel>
+
             </sidebar>
             <main>
+
                 <panel heading="Alerts">
                     <alert-list
-                        months="ctrl.currentMonth"
-                        show-danger="ctrl.showDanger"
-                        show-warning="ctrl.showWarning"
-                        show-info="ctrl.showInfo"
-                        filter="ctrl.messageFilter">
+                        months="page.selectedMonths"
+                        show-danger="page.showDanger"
+                        show-warning="page.showWarning"
+                        show-info="page.showInfo"
+                        filter="page.messageFilter">
                     </alert-list>
                 </panel>
+
             </main>
             <footer>
                 <h5>MMVS Copyright 2015</h5>
@@ -50,8 +59,9 @@
         <script src="checkbox.js"></script>
         <script src="panel.js"></script>
         <script src="alertList.js"></script>
+        <script src="alertAdd.js"></script>
         <script src="pageController.js"></script>
+        <script src="alertService.js"></script>
         <script src="app.module.js"></script>
     </body>
 </html>
-<!--multi="{[{ctrl.multiMode}]}"--> 

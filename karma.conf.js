@@ -7,22 +7,18 @@ module.exports = function (config) {
     'use strict';
 
     config.set({
-        
         preprocessors: {
-          'monthPicker.html': ['ng-html2js']
+            'monthPicker.html': ['ng-html2js']
         },
-
-        
         ngHtml2JsPreprocessor: {
-          moduleName: 'templates'
+            moduleName: 'templates'
         },
-        
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: false,
         // base path, that will be used to resolve files and exclude
         basePath: '',
         // testing framework to use (jasmine/mocha/qunit/...)
-        frameworks: ['jasmine-jquery','jasmine'],
+        frameworks: ['jasmine-jquery', 'jasmine'],
         // list of files / patterns to load in the browser
         files: [
             // bower:js
@@ -30,11 +26,13 @@ module.exports = function (config) {
             'assets/angular.js',
             'assets/bootstrap.js',
             'assets/angular-mocks.js',
-
-             'monthPicker.js',
-             'monthPicker.spec.js',
-
-             'monthPicker.html',
+            'monthPicker.js',
+//            'monthPicker.spec.js',
+            'monthPicker.html',
+            'alertService.js',
+            'alertService.spec.js',
+            'alertList.js',
+            'alertList.spec.js'
         ],
         // list of files / patterns to exclude
         exclude: [
@@ -60,7 +58,7 @@ module.exports = function (config) {
 //            'karma-chrome-launcher',
             'karma-jasmine-jquery',
             'karma-jasmine',
-             'karma-spec-reporter'
+            'karma-spec-reporter'
         ],
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
@@ -79,7 +77,7 @@ module.exports = function (config) {
             captureConsole: true
         },
         reporters: ['spec']
-        
+
 
     });
 };

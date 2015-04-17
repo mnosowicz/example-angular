@@ -1,0 +1,53 @@
+<form name="alertForm" role="form" ng-submit="ctrl.clickAdd(ctrl.formMonth, ctrl.formSeverity, ctrl.formMessage)" novalidate>
+
+    <div class="form-group">
+        <div class="input-group">
+        <label>Month</label>
+        <select name="month"
+                ng-model="ctrl.formMonth"
+                ng-options="month for month in ctrl.months"
+                ng-selected="ctrl.currentMonth === month"
+                required>
+        </select>
+        </div>
+        <div ng-show="alertForm.$submitted || alertForm.month.$touched" class="errors">
+            <span ng-show="alertForm.month.$error.required">must have some value</span>
+        </div>   
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <label>Severity</label>
+            <select name="severity"
+                    ng-model="ctrl.formSeverity"
+                    required>
+                <option>info</option>
+                <option>warning</option>
+                <option>danger</option>
+            </select>
+        </div>
+        <div ng-show="alertForm.$submitted || alertForm.severity.$touched" class="errors">
+            <span ng-show="alertForm.severity.$error.required">must have some value</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <label>Message</label>
+            <input name="message"
+                   type="text" 
+                   class="form-control" 
+                   ng-model="ctrl.formMessage" 
+                   ng-minlength="3"
+                   ng-maxlength="150"
+                   required />
+        </div>
+        <div ng-show="alertForm.$submitted || alertForm.message.$touched" class="errors">
+            <span ng-show="alertForm.message.$error.minlength">must be at least 2 characters</span>
+            <span ng-show="alertForm.message.$error.maxlength">cannot be more than 150 characters</span>
+            <span ng-show="alertForm.message.$error.required">must have some value</span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
