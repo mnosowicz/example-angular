@@ -20,16 +20,21 @@
 
     function controller(AlertService) {
         var ctrl = this;
-        
-        // api
-        
-        ctrl.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
         ctrl.clickAdd = clickAdd
+        ctrl.message = ""
+        ctrl.month = ""
+        ctrl.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        ctrl.severity = ""
         
-        function clickAdd(month, severity, message) {
-            var newAlert = {month: month, severity: severity, message: message}
-            console.log("Adding new alert:" + JSON.stringify(newAlert))
+        function clickAdd() {
+            var newAlert = {month: ctrl.currentMonth, severity: ctrl.severity, message: ctrl.message}
             AlertService.addAlert(newAlert)
+            ctrl.month = ""
+            ctrl.severity = ""
+            ctrl.message = ""
+            ctrl.alertForm.$setPristine()
+            ctrl.alertForm.$setUntouched()
         }
     }
 

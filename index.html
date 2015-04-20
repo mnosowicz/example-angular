@@ -8,36 +8,30 @@
     <body ng-app="app">
         <!--[if lt IE 9]>
         <div class="alert alert-danger" role="alert">
-        Angular 1.3 is not supported in IE8 and below. To see this demo you need to use at least Internet Explorer 9.
+        You appear to be using an old version of Internet Explorer (8 or lower). Angular 1.3 is not supported in IE8 and below. To see this demo you need to use at least Internet Explorer 9.
         </div>
         <![endif]-->
         <page ng-controller="PageController as page">
+            
             <header>
-                <h1>Monthly Message Viewing System</h1>
+                <h1>Monthly Message System</h1>
+                <panel heading="Add Alert">
+                    <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
+                </panel>
             </header>
+            
             <sidebar>
-
                 <panel heading="Month picker">
                     <month-picker 
                         multi="{{page.multiMode}}"
                         selected-months="page.setSelectedMonths(months)"
                         last-selected-month="page.setLastSelectedMonth(month)">
                     </month-picker>
+                    <input type="checkbox" ng-model="page.multiMode" /> multi mode
                 </panel>
-                
-                <panel heading="Month Picker Options">
-                    <checkbox label="multi-mode" model="page.multiMode"></checkbox>
-                    <br />
-                    filter message: <input type='text' ng-model="page.messageFilter"></input>
-                </panel>
-
-                <panel heading="Add Alert">
-                    <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
-                </panel>
-
             </sidebar>
+            
             <main>
-
                 <panel heading="Alerts">
                     <alert-list
                         months="page.selectedMonths"
@@ -47,11 +41,12 @@
                         filter="page.messageFilter">
                     </alert-list>
                 </panel>
-
             </main>
+            
             <footer>
-                <h5>MMVS Copyright 2015</h5>
+                <h5>MMS Copyright 2015</h5>
             </footer>
+            
         </page>
         
         <script src="monthPicker.js"></script>
