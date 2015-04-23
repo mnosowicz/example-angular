@@ -10,9 +10,9 @@
             replace: true,
             templateUrl: 'monthPicker.html',
             scope: {
-                multi: '@?',
-                selectedMonths: '&',
-                lastSelectedMonth: '&'
+                multi: '@?',                //
+                selectedMonths: '&',        // create a delegate selectedMonths
+                lastSelectedMonth: '&'      // create a delegate lastSelectedMonth
             },
             controller: controller,
             controllerAs: 'ctrl',
@@ -20,8 +20,8 @@
         }
     }
 
-    function controller () {
-        var ctrl = this;
+    function controller() {
+        var ctrl = this
 
         ctrl.isSelected = isSelected
         ctrl.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -65,7 +65,7 @@
         }
         
         function lastSelectedMonthCallback() {
-            ctrl.lastSelectedMonth({'month': ctrl.lastSelected});
+            ctrl.lastSelectedMonth({'month': ctrl.lastSelected})
         }
     }
 

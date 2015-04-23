@@ -13,8 +13,7 @@
             bindToController: true,
             templateUrl: 'alertList.html',
             scope: {
-                months: '=',
-                filter: '=?'
+                months: '='
             }
         }
     }
