@@ -1,8 +1,7 @@
 (function () {
 
     angular.module('panelModule', [])
-            .directive('panel', directive)
-            .controller('PanelController', controller)
+            .directive('panel', directive);
 
     function directive() {
         return {
@@ -13,14 +12,17 @@
             scope: {
                 heading: '@'
             },
-            controller: controller,
+            controller: function() {},
             controllerAs: 'ctrl',
             bindToController: true,
-        }
-    }
-    
-    function controller() {
-//        var ctrl = this;
+            link: function(scope, iElement, iAttr, ctrl, transcludeFn) {
+                var target = iElement.find('div[transclude-id]')
+                transcludeFn(scope.$parent, function (clone) {
+                     target.empty();
+                     target.append(clone);
+                })
+            }
+        };
     }
 
-})()
+})();

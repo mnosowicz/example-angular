@@ -15,14 +15,17 @@
         <!--[if (gt IE 8)|!(IE)]><!-->
         <page ng-controller="PageController as page">
             
-            <div transclude-to="site-head">
+            <div layout="page-header" class="myclass">
                 <h1>Monthly Message System</h1>
+            </div>
+            
+            <div layout="page-header">
                 <panel heading="Add Alert">
                     <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
                 </panel>
             </div>
             
-            <div  transclude-to="site-menu">
+            <div layout="page-sidebar">
                 <panel heading="Month picker">
                     <month-picker 
                         multi="{{page.multiMode}}"
@@ -33,7 +36,7 @@
                 </panel>
             </div>
             
-            <div transclude-to="site-body">
+            <div layout="page-main">
                 <panel heading="Alerts">
                     <alert-list months="page.selectedMonths"></alert-list>
                 </panel>

@@ -85,12 +85,5 @@ describe('Given an AlertService', function () {
              })
 
          })
- 
-
-
     })
-
-
-    
-  
 })

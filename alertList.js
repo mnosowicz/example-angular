@@ -1,8 +1,9 @@
 (function () {
 
-    angular.module('alertListModule', [])
-            .directive("alertList", directive)
-            .controller("AlertListController", controller)
+    angular
+        .module('alertListModule', [])
+        .directive("alertList", directive)
+        .controller("AlertListController", controller);
 
     function directive() {
         return {
@@ -15,33 +16,29 @@
             scope: {
                 months: '='
             }
-        }
+        };
     }
 
     function controller(AlertService) {
-        var ctrl = this
+        var ctrl = this;
 
-        // api
-
-        ctrl.filterAlerts = filterAlerts
-        ctrl.hasAlerts = hasAlerts
-        ctrl.hasMonths = hasMonths
-
-        // api methods
+        ctrl.filterAlerts = filterAlerts;
+        ctrl.hasAlerts = hasAlerts;
+        ctrl.hasMonths = hasMonths;
 
         function filterAlerts(months) {
-            AlertService.updateSelectedMonths(months)
-            return AlertService.filteredAlerts
+            AlertService.updateSelectedMonths(months);
+            return AlertService.filteredAlerts;
         }
 
         function hasAlerts() {
-            return filterAlerts(ctrl.months).length > 0
+            return filterAlerts(ctrl.months).length > 0;
         }
 
         function hasMonths() {
-            return ctrl.months.length > 0
+            return ctrl.months.length > 0;
         }
 
     }
 
-})()
+})();
