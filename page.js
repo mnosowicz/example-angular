@@ -8,16 +8,17 @@
     function directive() {
         return {
             transclude: true,
-            replace: true,
             templateUrl: 'page.html',
-            link: link,
-            scope: {}
+            scope: {},
+            link: link
         };
     }
 
     function link(scope, iElement, attrs, ctrl, transcludeFn) {
-        transcludeFn(scope.$parent, function (clone) {
-//            console.log(clone)
+        // call transclude with custom clone attch function
+        transcludeFn(function (clone) {
+            console.log(clone);
+            // loop through nodes in the clone
             angular.forEach(clone, function (cloneEl) {
                 // only interested in element nodes with a 'layout' attribute
                 if (cloneEl.nodeType === 1 && cloneEl.attributes["layout"]) {

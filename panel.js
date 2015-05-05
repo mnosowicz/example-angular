@@ -5,24 +5,27 @@
 
     function directive() {
         return {
-            restrict: 'AE',
-            replace: true,
             transclude: true,
             templateUrl: 'panel.html',
+            controller: function () {},
+            controllerAs: 'ctrl',
             scope: {
                 heading: '@'
             },
-            controller: function() {},
-            controllerAs: 'ctrl',
             bindToController: true,
-            link: function(scope, iElement, iAttr, ctrl, transcludeFn) {
-                var target = iElement.find('div[transclude-id]')
-                transcludeFn(scope.$parent, function (clone) {
-                     target.empty();
-                     target.append(clone);
-                })
-            }
+            link: link
         };
+    }
+
+    function link(scope, iElement, iAttr, ctrl, transcludeFn) {
+        // find element with ng-transclude attribute
+        var target = iElement.find('[ng-transclude]')
+        // pass 'clone attach function' to transclude
+        transcludeFn(function (clone) {
+            // replace target content with clone
+            target.empty();
+            target.append(clone);
+        })
     }
 
 })();

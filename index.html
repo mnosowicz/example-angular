@@ -6,14 +6,14 @@
         <link rel="stylesheet" href="assets/bootstrap.css">
         <link rel="stylesheet" href="assets/app.css">
     </head>
-    <body ng-app="app">
+    <body ng-app="app" ng-controller="PageController as page">
         <!--[if lt IE 9]>
         <div class="alert alert-danger" role="alert">
         You appear to be using an old version of Internet Explorer (8 or lower). Angular 1.3 is not supported in IE8 and below. To see this demo you need to use at least Internet Explorer 9.
         </div>
         <![endif]-->
         <!--[if (gt IE 8)|!(IE)]><!-->
-        <page ng-controller="PageController as page">
+        <page>
             
             <div layout="page-header" class="myclass">
                 <h1>Monthly Message System</h1>
@@ -26,6 +26,7 @@
             </div>
             
             <div layout="page-sidebar">
+                multi: {{page.multiMode}}
                 <panel heading="Month picker">
                     <month-picker 
                         multi="{{page.multiMode}}"
