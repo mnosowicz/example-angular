@@ -1,28 +1,33 @@
 (function () {
 
-    angular.module('panelModule', [])
+    "use strict";
+
+    angular
+            .module('panelModule', [])
             .directive('panel', directive);
 
     function directive() {
         return {
-            restrict: 'AE',
             replace: true,
             transclude: true,
             templateUrl: 'panel.html',
-            scope: {
-                heading: '@'
-            },
-            controller: function() {},
+            scope: {},
+            controller: controller,
             controllerAs: 'ctrl',
             bindToController: true,
-            link: function(scope, iElement, iAttr, ctrl, transcludeFn) {
-                var target = iElement.find('div[transclude-id]')
-                transcludeFn(scope.$parent, function (clone) {
-                     target.empty();
-                     target.append(clone);
-                })
-            }
         };
     }
+    
+    function controller() {
+        var ctrl = this;
+        
+        ctrl.showBody = true;
+        ctrl.toggleBody = toggleBody;
+        
+        function toggleBody() {
+            ctrl.showBody = !ctrl.showBody;
+        }
+    }
+
 
 })();

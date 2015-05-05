@@ -15,14 +15,15 @@
         };
     }
 
-    function link(scope, iElement, attrs, ctrl, transcludeFn) {
-        transcludeFn(scope.$parent, function (clone) {
-//            console.log(clone)
+    function link(scope, iElement, iAttributes, controller, transcludeFn) {
+        transcludeFn(function (clone, transcludeScope) {
             angular.forEach(clone, function (cloneEl) {
                 // only interested in element nodes with a 'layout' attribute
                 if (cloneEl.nodeType === 1 && cloneEl.attributes["layout"]) {
+                    // find element with matching 'layout' value
                     var targetId = cloneEl.attributes["layout"].value;
                     var target = iElement.find("#" + targetId);
+                    // append if found
                     if (target.length) {
                         target.append(cloneEl);
                     } else {

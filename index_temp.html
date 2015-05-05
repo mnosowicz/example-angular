@@ -20,37 +20,50 @@
         </div>
 
         <div layout="page-header">
-            <panel heading="Add Alert">
-                <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
+            <panel>
+                <panel-header>
+                    <span class="h4">Add Alert</span>
+                </panel-header>
+                <panel-body>
+                    <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
+                </panel-body>
             </panel>
         </div>
 
         <div layout="page-sidebar">
-            <panel heading="Month Picker">
-                <month-picker 
-                    multi="{{ page.multiMode }}"
-                    selected="page.selectedMonths"
-                    last-selected="page.setLastSelectedMonth(month)">
-                </month-picker>
-                <input type="checkbox" ng-model="page.multiMode" />multi mode
+            <panel>
+                <panel-header>
+                    <input type="checkbox" ng-model="page.multiMode" />multi mode
+                </panel-header>
+                <panel-body>
+                    <month-picker 
+                        multi="{{page.multiMode}}"
+                        selected="page.setSelectedMonths(months)"
+                        last-selected="page.setLastSelectedMonth(month)">
+                    </month-picker>
+                </panel-body>
             </panel>
         </div>
 
-        <!--        <div layout="page-sidebar">
-                    <panel heading="Month picker">
-                        <month-picker 
-                            multi="{{page.multiMode}}"
-                            selected="page.setSelectedMonths(months)"
-                            last-selected="page.setLastSelectedMonth(month)">
-                        </month-picker>
-                        <input type="checkbox" ng-model="page.multiMode" /> multi mode
-                    </panel>
-                </div>-->
+<!--        <div layout="page-sidebar">
+            <panel heading="Month picker">
+                <month-picker 
+                    multi="{{page.multiMode}}"
+                    selected="page.setSelectedMonths(months)"
+                    last-selected="page.setLastSelectedMonth(month)">
+                </month-picker>
+                <input type="checkbox" ng-model="page.multiMode" /> multi mode
+            </panel>
+        </div>-->
 
         <div layout="page-main">
-            <panel heading="Transclude Test">
-                <alert-list months="page.selectedMonths"></alert-list>
-                <!--<p>Transclude me!</p>-->
+            <panel heading="Alert List">
+                <panel-header>
+                    <span class="h4">Add Alert</span>
+                </panel-header>
+                <panel-body>
+                    <alert-list months="page.selectedMonths"></alert-list>
+                </panel-body>
             </panel>
         </div>
 

@@ -1,19 +1,20 @@
 (function () {
+    
+    "use strict";
 
     angular
         .module('monthPickerModule', [])
-        .directive("monthPicker", directive)
-        .controller("MonthPickerController", controller);
+        .directive("monthPicker", directive);
+//        .controller("MonthPickerController", controller);
 
     function directive() {
         return {
-            restrict: 'AE',
-            replace: true,
             templateUrl: 'monthPicker.html',
+            replace: true,
             scope: {
                 multi: '@?',
-                selectedMonths: '&',
-                lastSelectedMonth: '&'
+                selected: '=',
+                lastSelected: '&'
             },
             controller: controller,
             controllerAs: 'ctrl',
@@ -26,44 +27,37 @@
 
         ctrl.isSelected = isSelected;
         ctrl.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        ctrl.multi = 'false';
-        ctrl.selected = [];
-        ctrl.lastSelected = "";
         ctrl.selectMonth = selectMonth;
+
+        function selectMonth(month) {
+            if (isMultiMode()) {
+                if (isSelected(month)) {
+                    // in multi-mode with month already selected
+                    // so remove month
+                    var index = ctrl.selected.indexOf(month);
+                    ctrl.selected.splice(index, 1);
+                } else {
+                    // in multi-mode with month unselected
+                    // so add month
+                    ctrl.selected.push(month);
+                    ctrl.lastSelected({'month': month});
+                }
+            } else {
+                // in single-select mode
+                // so make month the only selected
+                ctrl.selected = [month];
+                ctrl.lastSelected({'month': month});
+            }
+        }
+
+        function isMultiMode() {
+            return ctrl.myMulti === 'true';
+        }
 
         function isSelected(month) {
             return ctrl.selected.indexOf(month) > -1;
         }
 
-        function selectMonth(month) {
-            if (isMultiMode()) {
-                if (isSelected(month)) {
-                    var index = ctrl.selected.indexOf(month);
-                    ctrl.selected.splice(index, 1);
-                } else {
-                    ctrl.selected.push(month);
-                    ctrl.lastSelected = month;
-                }
-            } else {
-                ctrl.selected = [];
-                ctrl.selected.push(month);
-                ctrl.lastSelected = month;
-            }
-            selectedMonthsCallback();
-            lastSelectedMonthCallback();
-        }
-
-        function isMultiMode() {
-            return ctrl.multi === 'true';
-        }
-
-        function selectedMonthsCallback() {
-            ctrl.selectedMonths({'months': ctrl.selected});
-        }
-
-        function lastSelectedMonthCallback() {
-            ctrl.lastSelectedMonth({'month': ctrl.lastSelected});
-        }
     }
 
 })();

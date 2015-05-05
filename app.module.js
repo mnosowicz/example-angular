@@ -1,6 +1,8 @@
 angular.module('app', [
     'monthPickerModule',
     'panelModule',
+    'panelHeaderModule',
+    'panelBodyModule',
     'pageModule',
     'pageControllerModule',
     'alertListModule',
@@ -14,6 +16,8 @@ angular.module('app', [
 
 angular.module('monthPickerModule')
 angular.module('panelModule')
+angular.module('panelHeaderModule')
+angular.module('panelBodyModule')
 angular.module('pageModule')
 angular.module('pageControllerModule')
 angular.module('alertListModule')

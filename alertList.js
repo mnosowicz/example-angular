@@ -1,5 +1,7 @@
 (function () {
 
+    "use strict";
+
     angular
         .module('alertListModule', [])
         .directive("alertList", directive)
@@ -7,9 +9,8 @@
 
     function directive() {
         return {
-            restrict: 'AE',
             replace: true,
-            controller: 'AlertListController',
+            controller: controller,
             controllerAs: 'ctrl',
             bindToController: true,
             templateUrl: 'alertList.html',

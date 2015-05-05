@@ -2,20 +2,15 @@
 
     angular
         .module("pageControllerModule", [])
-        .controller("PageController", pageController);
+        .controller("PageController", controller);
 
-    function pageController() {
+    function controller() {
         var ctrl = this;
 
-        ctrl.setSelectedMonths = setSelectedMonths;
-        ctrl.setLastSelectedMonth = setLastSelectedMonth;
-        ctrl.selectedMonths = [];
         ctrl.lastSelectedMonth = "";
         ctrl.multiMode = true;
-
-        function setSelectedMonths(months) {
-            ctrl.selectedMonths = months;
-        }
+        ctrl.selectedMonths = ['Jan', 'Feb'];
+        ctrl.setLastSelectedMonth = setLastSelectedMonth;
 
         function setLastSelectedMonth(month) {
             ctrl.lastSelectedMonth = month;
