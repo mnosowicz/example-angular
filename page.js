@@ -14,10 +14,9 @@
         };
     }
 
-    function link(scope, iElement, attrs, ctrl, transcludeFn) {
+    function link(scope, iElement, iAttrs, ctrl, transcludeFn) {
         // call transclude with custom clone attch function
-        transcludeFn(function (clone) {
-            console.log(clone);
+        transcludeFn(function (clone, transclusionScope) {
             // loop through nodes in the clone
             angular.forEach(clone, function (cloneEl) {
                 // only interested in element nodes with a 'layout' attribute

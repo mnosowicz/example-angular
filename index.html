@@ -13,46 +13,46 @@
         </div>
         <![endif]-->
         <!--[if (gt IE 8)|!(IE)]><!-->
-        <page>
-            
-            <div layout="page-header" class="myclass">
-                <h1>Monthly Message System</h1>
-            </div>
-            
-            <div layout="page-header">
-                <panel heading="Add Alert">
-                    <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
-                </panel>
-            </div>
-            
-            <div layout="page-sidebar">
-                multi: {{page.multiMode}}
-                <panel heading="Month picker">
-                    <month-picker 
-                        multi="{{page.multiMode}}"
-                        selected-months="page.setSelectedMonths(months)"
-                        last-selected-month="page.setLastSelectedMonth(month)">
-                    </month-picker>
-                    <input type="checkbox" ng-model="page.multiMode" /> multi mode
-                </panel>
-            </div>
-            
-            <div layout="page-main">
-                <panel heading="Alerts">
-                    <alert-list months="page.selectedMonths"></alert-list>
-                </panel>
-            </div>
+    <page>
 
-        </page>
-        
-        <script src="monthPicker.js"></script>
-        <script src="page.js"></script>
-        <script src="panel.js"></script>
-        <script src="alertList.js"></script>
-        <script src="alertAdd.js"></script>
-        <script src="pageController.js"></script>
-        <script src="alertService.js"></script>
-        <script src="app.module.js"></script>
-        <!--<![endif]-->
-    </body>
+        <div layout="page-header" class="myclass">
+            <h1>Monthly Message System</h1>
+        </div>
+
+        <div layout="page-header">
+            <panel heading="Add Alert">
+                <alert-add current-month="{{page.lastSelectedMonth}}"></alert-add>
+            </panel>
+        </div>
+
+        <div layout="page-sidebar">
+            multi: {{page.multiMode}}
+            <panel heading="Month picker">
+                <month-picker 
+                    multi="{{page.multiMode}}"
+                    selected-months="page.setSelectedMonths(months)"
+                    last-selected-month="page.setLastSelectedMonth(month)">
+                </month-picker>
+                <input type="checkbox" ng-model="page.multiMode"/> multi mode
+            </panel>
+        </div>
+
+        <div layout="page-main">
+            <panel heading="Alerts">
+                <alert-list months="page.selectedMonths"></alert-list>
+            </panel>
+        </div>
+
+    </page>
+
+    <script src="monthPicker.js"></script>
+    <script src="page.js"></script>
+    <script src="panel.js"></script>
+    <script src="alertList.js"></script>
+    <script src="alertAdd.js"></script>
+    <script src="pageController.js"></script>
+    <script src="alertService.js"></script>
+    <script src="app.module.js"></script>
+    <!--<![endif]-->
+</body>
 </html>

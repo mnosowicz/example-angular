@@ -8,7 +8,7 @@
     function directive() {
         return {
             restrict: 'AE',
-            replace: true,
+//            replace: true,
             templateUrl: 'monthPicker.html',
             scope: {
                 multi: '@?',
