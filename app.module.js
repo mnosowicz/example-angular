@@ -8,10 +8,6 @@ angular.module('app', [
     'alertServiceModule'
 ])
 
-//.config(function($interpolateProvider){
-//    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-//})
-
 angular.module('monthPickerModule')
 angular.module('panelModule')
 angular.module('pageModule')

@@ -6,7 +6,6 @@
     function directive() {
         return {
             transclude: true,
-            replace: true,
             templateUrl: 'panel.html',
             controller: function () {},
             controllerAs: 'ctrl',
