@@ -10,14 +10,13 @@
     function directive() {
         return {
             templateUrl: 'monthPicker.html',
-            replace: true,
+            controller: "MonthPickerController",
+            controllerAs: 'ctrl',
             scope: {
                 multi: '@?',
                 selected: '=',
                 lastSelected: '&'
             },
-            controller: controller,
-            controllerAs: 'ctrl',
             bindToController: true
         };
     }
