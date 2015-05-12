@@ -7,14 +7,13 @@
 
     function directive() {
         return {
-            restrict: 'AE',
-            replace: true,
             templateUrl: 'alertAdd.html',
+            controller: controller,
+            controllerAs: 'ctrl',
+
             scope: {
                 currentMonth: "@"
             },
-            controller: controller,
-            controllerAs: 'ctrl',
             bindToController: true
         };
     }

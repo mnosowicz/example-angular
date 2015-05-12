@@ -7,15 +7,13 @@
 
     function directive() {
         return {
-            restrict: 'AE',
-            replace: true,
+            templateUrl: 'alertList.html',
             controller: 'AlertListController',
             controllerAs: 'ctrl',
-            bindToController: true,
-            templateUrl: 'alertList.html',
             scope: {
                 months: '='
-            }
+            },
+            bindToController: true            
         };
     }
 

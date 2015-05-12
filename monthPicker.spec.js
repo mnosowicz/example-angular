@@ -19,22 +19,22 @@ describe('Given a MonthPicker', function () {
            
             $compile(element)(scope);
             scope.$digest();
-        }))
+        }));
         
         it('should be properly set up', function() {
             expect(controller).toBeDefined();
-        })
+        });
 
         it('should have a months object with the 12 months', function() {
             expect(controller.months).toEqual(
                     jasmine.arrayContaining(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
             );
-        })
+        });
 
         it('should create 12 buttons', function() {
             var monthButtons = element.find('button.month-button');
             expect(monthButtons.length).toBe(12);
-        })
+        });
 
         it('should have labels on the buttons corresponding to the months', function() {
             var monthButtons = element.find('button.month-button');
@@ -51,7 +51,7 @@ describe('Given a MonthPicker', function () {
             expect($(monthButtons[9]).html()).toMatch('^Oct.*');
             expect($(monthButtons[10]).html()).toMatch('^Nov.*');
             expect($(monthButtons[11]).html()).toMatch('^Dec.*');
-        })
+        });
 
         it('should mark a single button clicked as active', function() {
             var monthButtons = element.find('button.month-button');
@@ -65,7 +65,7 @@ describe('Given a MonthPicker', function () {
             clicked =  element.find('button.active');
             expect(clicked.length).toBe(1);
             expect(clicked[0]).toEqual(monthButtons[9]);
-        })
+        });
 
         it('should return single month corresponding to selected button', function() {
             var monthButtons = element.find('button.month-button');
@@ -77,13 +77,13 @@ describe('Given a MonthPicker', function () {
                     jasmine.arrayContaining(['Jan'])
             );
 
-            monthButtons.eq(9).click()
-            expect(scope.lastSelected).toHaveBeenCalledWith('Oct')
+            monthButtons.eq(9).click();
+            expect(scope.lastSelected).toHaveBeenCalledWith('Oct');
             expect(scope.selectedMonths).toEqual(
                     jasmine.arrayContaining(['Oct'])
             );
-        })
-    })
+        });
+    });
     
     describe('when in multi mode', function() {
         
@@ -98,7 +98,7 @@ describe('Given a MonthPicker', function () {
            
             $compile(element)(scope);
             scope.$digest();
-        }))
+        }));
         
         it('should mark all buttons clicked as active', function() {
             var monthButtons = element.find('button.month-button');
@@ -113,7 +113,7 @@ describe('Given a MonthPicker', function () {
             expect(clicked.length).toBe(2);
             expect(clicked[0]).toEqual(monthButtons[0]);
             expect(clicked[1]).toEqual(monthButtons[9]);
-        })
+        });
         
         it('should toggle active buttons to inactive', function() {
             var monthButtons = element.find('button.month-button');
@@ -126,7 +126,7 @@ describe('Given a MonthPicker', function () {
             monthButtons.eq(5).click();
             clicked =  element.find('button.active');
             expect(clicked.length).toBe(0);
-        })
+        });
 
         it('should return months corresponding to selected buttons', function() {
             var monthButtons = element.find('button.month-button');
@@ -138,12 +138,12 @@ describe('Given a MonthPicker', function () {
                     jasmine.arrayContaining(['Jan'])
             );
 
-            monthButtons.eq(9).click()
-            expect(scope.lastSelected).toHaveBeenCalledWith('Oct')
+            monthButtons.eq(9).click();
+            expect(scope.lastSelected).toHaveBeenCalledWith('Oct');
             expect(scope.selectedMonths).toEqual(
                     jasmine.arrayContaining(['Jan', 'Oct'])
             );
-        })
-    })
+        });
+    });
   
-})
+});

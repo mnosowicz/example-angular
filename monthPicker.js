@@ -10,7 +10,7 @@
     function directive() {
         return {
             templateUrl: 'monthPicker.html',
-            controller: "MonthPickerController",
+            controller: controller,
             controllerAs: 'ctrl',
             scope: {
                 multi: '@?',
